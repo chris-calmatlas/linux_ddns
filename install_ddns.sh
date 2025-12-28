@@ -31,7 +31,7 @@ ln -sf "$INSTALL_DIR/update_cloudflareddns.sh" "/usr/sbin/ddns" || { echo "Could
 ln -sf "$INSTALL_DIR/ddns.service" "/etc/systemd/system/ddns.service" || { echo "Could not create /etc/systemd/system/ddns.service"; exit 1; }
 ln -sf "$INSTALL_DIR/ddns.timer" "/etc/systemd/system/ddns.timer" || { echo "Could not create /etc/systemd/system/ddns.timer"; exit 1; }
 
-read -p "Autostart and run every 10 minutes? " -n 1 -r
+read -p "Autostart and run every 10 minutes? (y/n)" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     systemctl enable ddns.timer --now

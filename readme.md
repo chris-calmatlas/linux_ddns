@@ -35,10 +35,18 @@ To install as a system service run:
 If you want to kick off the script without systemd just run the update script instead of the installer
 `./update_cloudflareddns.sh`
 
+### Checkout the results of all runs with systemd
+
+`sudo journalctl -eu ddns.service|grep -v 'systemd\[1\]'`
+
 ## Cleanup
 
 The install script creates /opt/ddns owned by root. If your .env file contains your API key then it is considered sensitive and should be protected. The installer sets permissions to 400 so only root can read it. If you used the installer you should delete the downloaded files since the unit files reference /opt/ddns.
 
+There also exists an uninstall script. Run `/opt/ddns/remove_ddns.sh` to stop the services and delete all files that were added by the installer.
+
 ## TODO
 
 It would be nice if this were a bit more modular to allow dropping in api calls for other dns providers.
+
+Add SyslogIdentifier=ddns to the service file
