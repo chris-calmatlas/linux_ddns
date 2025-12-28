@@ -21,7 +21,7 @@ if [ $currentip != $previousip ]; then
   requestBody="$(cat <<EOF
 {
   "type": "A",
-  "comment": "Updated by script $(date "+%m-%d at %H:%M")",
+  "comment": "By $(hostname) $(date "+%b %d at %H:%M")",
   "content": "$currentip"
 }
 EOF
