@@ -1,0 +1,7 @@
+[Unit]
+Description=Compare current IP and update
+Requisite=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/ddns

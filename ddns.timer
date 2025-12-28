@@ -1,0 +1,10 @@
+[Unit]
+Description=Check for new ip every 10 minutes
+
+[Timer]
+OnActiveSec=1
+OnCalendar=*:0/10
+Persistent=true
+
+[Install]
+WantedBy=timers.target
