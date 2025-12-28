@@ -30,3 +30,15 @@ chmod u+x "$INSTALL_DIR/update_cloudflareddns.sh"
 ln -sf "$INSTALL_DIR/update_cloudflareddns.sh" "/usr/sbin/ddns" || { echo "Could not create /usr/sbin/ddns"; exit 1; }
 ln -sf "$INSTALL_DIR/ddns.service" "/etc/systemd/system/ddns.service" || { echo "Could not create /etc/systemd/system/ddns.service"; exit 1; }
 ln -sf "$INSTALL_DIR/ddns.timer" "/etc/systemd/system/ddns.timer" || { echo "Could not create /etc/systemd/system/ddns.timer"; exit 1; }
+
+read -p "Autostart and run every 10 minutes? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    systemctl enable ddns.timer --now
+fi
+
+read -p "Remove these installer files? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    rm -rf $script_dir
+fi
