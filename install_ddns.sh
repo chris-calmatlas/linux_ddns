@@ -36,9 +36,3 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     systemctl enable ddns.timer --now
 fi
-
-read -p "Remove these installer files? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    rm -rf $script_dir
-fi
