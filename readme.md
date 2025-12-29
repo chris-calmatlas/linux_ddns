@@ -35,9 +35,9 @@ To install as a system service run:
 If you want to kick off the script without systemd just run the update script instead of the installer
 `./update_cloudflareddns.sh`
 
-### Checkout the results of all runs with systemd
+### See the logged results
 
-`sudo journalctl -eu ddns.service|grep -v 'systemd\[1\]'`
+`sudo journalctl -t ddns`
 
 ## Cleanup
 
@@ -48,5 +48,3 @@ There also exists an uninstall script. Run `/opt/ddns/remove_ddns.sh` to stop th
 ## TODO
 
 It would be nice if this were a bit more modular to allow dropping in api calls for other dns providers.
-
-Add SyslogIdentifier=ddns to the service file
